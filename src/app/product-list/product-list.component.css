@@ -1,0 +1,68 @@
+tr.tableRow:nth-child(even) {
+    background: #e6ecff;
+}
+tr.tableRow:nth-child(odd) {
+    background: #ccd9ff;
+}
+.scrollableArea {
+    height: 65vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin: 0px -15px;
+}
+.scrollAdjustment {
+    margin-left: 0px;
+}
+.textColor {
+    font-weight: bold;
+    -webkit-filter: invert(100%);
+    filter: invert(100%);
+}
+button.calendar, button.calendar:active {
+    width: 2.75rem;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAcCAYAAAAEN20fAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAEUSURBVEiJ7ZQxToVAEIY/YCHGxN6XGOIpnpaEsBSeQC9ArZbm9TZ6ADyBNzAhQGGl8Riv4BLAWAgmkpBYkH1b8FWT2WK/zJ8ZJ4qiI6XUI3ANnGKWBnht2/ZBDRK3hgVGNsCd7/ui+JkEIrKtqurLpEWaphd933+IyI3LEIdpCYCiKD6HcuOa/nwOa0ScJEnk0BJg0UTUWJRl6RxCYEzEmomsIlPU3IPW+grIAbquy+q6fluy/28RIBeRMwDXdXMgXLj/B2uimRXpui4D9sBeRLKl+1N+L+t6RwbWrZliTTTr1oxYtzVWiTQAcRxvTX+eJMnlUDaO1vpZRO5NS0x48sIwfPc87xg4B04MCzQi8hIEwe4bl1DnFMCN2zsAAAAASUVORK5CYII=') !important;
+    background-repeat: no-repeat;
+    background-size: 23px;
+    background-position: center;
+}
+.inputControls {
+    display: flex;
+    justify-content: left;
+}
+.resultDiv {
+    padding: 15px 20px 10px;
+}
+.vertCenter {
+    align-items: center;
+}
+.labelStyle {
+    padding-right: 8px;
+    align-self: center;
+}
+.errorNote {
+    font-size: 14px;
+    color: red;
+}
+.tableHeader {
+    background-color: #6699ff;
+}
+.sortableColumn {
+    color: blue;
+    cursor: pointer;
+}
+.loaderDiv {
+    display: flex;
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0.3;
+    background-color: #ffffff;
+    text-align: center;
+}
+.loaderIcon {
+    margin: auto;
+    font-size: 4em;
+}

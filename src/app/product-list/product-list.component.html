@@ -1,0 +1,69 @@
+<div class="container-fluid">
+  <div>
+    <h5>Filter By Dates </h5>
+    <form class="form-inline">
+      <div class="form-group inputControls">
+        
+        <div class="input-group">
+          <div class="labelStyle">From : </div>
+          <input class="form-control" placeholder="yyyy-mm-dd" name="fromDate" [(ngModel)]="fromDate" ngbDatepicker
+            #d1="ngbDatepicker">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar" (click)="d1.toggle()" type="button"></button>
+          </div>
+        </div>
+        
+        <div class="input-group pl-5">
+          <div class="labelStyle">To : </div>
+          <input class="form-control" placeholder="yyyy-mm-dd" name="toDate" [(ngModel)]="toDate" ngbDatepicker
+            #d2="ngbDatepicker">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar" (click)="d2.toggle()" type="button"></button>
+          </div>
+        </div>
+
+        <div class="pl-5">
+        <button type="button" class="btn btn-primary btn-sm mr-3" (click)="applyFilter()">Apply</button>
+        <button type="button" class="btn btn-secondary btn-sm" (click)="clearFilter()">Clear</button>
+        </div>
+      </div>
+      
+    </form>
+    <div class="errorNote" *ngIf="isErrorNoteVisible">
+      Note : {{errorNoteText}}
+    </div>
+  </div>
+  <div class="resultDiv">
+    <h5 class="row">Records : </h5>
+    <table class="container-fluid">
+      <tr class="row tableHeader">
+        <th class="col-sm-1">Sr No</th>
+        <th class="col-sm-2 sortableColumn" (click)="sortData('city')"> City <span [ngClass]="getSortIconClass('city')"></span> </th>
+        <th class="col-sm-2 sortableColumn" (click)="sortData('start_date')"> Start Date <span [ngClass]="getSortIconClass('start_date')"></span> </th>
+        <th class="col-sm-2 sortableColumn" (click)="sortData('end_date')"> End Date <span [ngClass]="getSortIconClass('end_date')"></span></th>
+        <th class="col-sm-1 sortableColumn" (click)="sortData('price')"> Price <span [ngClass]="getSortIconClass('price')"></span></th>
+        <th class="col-sm-2 sortableColumn" (click)="sortData('status')"> Status <span [ngClass]="getSortIconClass('status')"></span></th>
+        <th class="col-sm-2 sortableColumn" (click)="sortData('color')"> Color <span [ngClass]="getSortIconClass('color')"></span></th>
+      </tr>
+      <div class="scrollableArea" *ngIf="productList && productList.length > 0">
+        <tr class="row scrollAdjustment tableRow" *ngFor="let product of productList; let i = index">
+          <td class="col-sm-1"> {{ i+1 }}</td>
+          <td class="col-sm-2"> {{ product.city }}</td>
+          <td class="col-sm-2"> {{ product.start_date | date: 'M/d/yyyy'}}</td>
+          <td class="col-sm-2"> {{ product.end_date | date: 'M/d/yyyy'}}</td>
+          <td class="col-sm-1"> {{ product.price | currency:'EUR':'symbol'}}</td>
+          <td class="col-sm-2"> {{ product.status }}</td>
+          <td class="col-sm-2" [ngStyle]="{'background-color': product.color}">
+            <span class="textColor" [ngStyle]="{'color': product.color}">{{ product.color }}</span>
+          </td>
+        </tr>
+      </div>
+      <div class="text-center mt-5" *ngIf="productList && productList.length === 0">
+        No records found for given filter criteria.
+      </div>
+    </table>
+  </div>
+  <div class="loaderDiv" *ngIf="apiCallInProgress">
+    <i class="fa fa-cog fa-spin loaderIcon" aria-hidden="true"></i>
+  </div>
+</div>
